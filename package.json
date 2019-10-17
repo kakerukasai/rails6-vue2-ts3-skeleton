@@ -5,6 +5,11 @@
   "repository": "https://kakerukasai@github.com/kakerukasai/rails6-vue2-ts3-skeleton.git",
   "author": "Kakeru Kasai <kakeru@gengosha.co.jp>",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack --progress",
+    "watch": "webpack --progress --watch",
+    "build:production": "webpack --mode=production"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
