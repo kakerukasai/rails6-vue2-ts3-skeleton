@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "sourceMap": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "pretty": true,
+    "removeComments": true,
+    "importHelpers": true,
+    "baseUrl": "./frontend",
+    "paths": {
+      "*": ["*"],
+      "scripts": ["scripts"]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./frontend/scripts/types",
+      "./node_modules/axios-mock-adapter/types"
+    ]
+  },
+  "include": [
+    "./frontend/scripts/**/*.*"
+  ],
+  "atom": {
+    "rewriteTsConfig": false
+  },
+  "compileOnSave": false
+}
