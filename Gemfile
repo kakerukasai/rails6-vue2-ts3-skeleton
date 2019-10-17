@@ -10,7 +10,7 @@ gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -28,6 +28,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Use rack-proxy to rewrite asset paths from webpack-dev-server
+  gem 'rack-proxy'
 end
 
 group :development do
@@ -35,6 +37,16 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Use Capistrano as the deploy tool
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-db'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-rake'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails-collection'
+  gem 'capistrano-rvm'
+  gem 'capistrano-yarn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
