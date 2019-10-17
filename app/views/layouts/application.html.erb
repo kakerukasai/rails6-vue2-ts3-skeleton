@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsVueTsSkeleton</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%# stylesheet_bundle_tag  'styles/main/application', media: 'all' %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <%= javascript_bundle_tag 'scripts/entries/app' %>
+  </body>
+</html>
