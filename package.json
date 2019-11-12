@@ -34,7 +34,7 @@
     "ts-loader": "^6.2.0",
     "tslint": "^5.20.0",
     "tslint-loader": "^3.5.4",
-    "typescript": "^3.6.4",
+    "typescript": "^3.7.2",
     "vue": "^2.6.10",
     "vue-i18n": "^8.15.0",
     "vue-loader": "^15.7.1",
