@@ -136,3 +136,15 @@ Capistrano によるデプロイ設定は `config/deploy.rb` および `config/d
 ```
 $ cap production deploy
 ```
+
+## トラブルシューティング
+
+### `Do you want to install 'webpack-cli' (yes/no):` と表示されデプロイが途中で止まる
+根本的な解決法はわかっていませんが、以下の方法で対処してください。
+
+1. デプロイ先サーバに `webapp` ユーザでログイン
+2. `/var/www/sites/com_example/releases/20190101000000` ディレクトリに移動
+    - `/var/www/sites/com_example` の部分には、デプロイ先サーバ内のデプロイ先ディレクトリを指定してください。
+    - `20190101000000` の部分には、 `releases` ディレクトリ内にある最も新しいディレクトリを指定してください。
+3. `$ yarn build:production` を実行すると `Do you want to install 'webpack-cli' (yes/no):` と表示されるので、 `yes` と回答して webpack-cli をインストール
+4. デプロイ先サーバからログアウトし、Capistrano でのデプロイを再度実行する
