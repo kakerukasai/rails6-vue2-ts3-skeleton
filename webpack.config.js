@@ -3,7 +3,8 @@ const { basename, dirname, extname, join, resolve, relative } = require('path'),
       { sync } = require('glob'),
       VueLoaderPlugin = require('vue-loader/lib/plugin'),
       MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-      ManifestPlugin = require('webpack-manifest-plugin')
+      ManifestPlugin = require('webpack-manifest-plugin'),
+      Autoprefixer = require('autoprefixer')
 
 const rootDir = process.cwd()
 
@@ -58,6 +59,13 @@ module.exports = {
           // MiniCssExtractPlugin.loader,
           'vue-style-loader',
           'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [Autoprefixer],
+            },
+          },
           'sass-loader',
         ],
       },
@@ -67,6 +75,13 @@ module.exports = {
           // MiniCssExtractPlugin.loader,
           'vue-style-loader',
           'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [Autoprefixer],
+            },
+          },
           {
             loader: 'sass-loader',
             options: {
