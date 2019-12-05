@@ -31,6 +31,7 @@ export default {
 @import 'styles/main/vue'
 #app
   height: 100vh
+  tab-size: 4
   .wrapper
     display: flex
     align-items: center
