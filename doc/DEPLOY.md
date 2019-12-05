@@ -73,10 +73,10 @@ $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804B
 $ \curl -sSL https://get.rvm.io | bash -s stable
 $ source .profile
 $ rvm install ruby-2.6.0
-$ rvm ruby-2.6.0 do rvm gemset create rails-vue-ts-skeleton
+$ rvm ruby-2.6.0 do rvm gemset create rails6-vue2-ts3-skeleton
 $ source ~/.rvm/scripts/rvm
 $ rvm use ruby-2.6.0
-$ rvm gemset use rails-vue-ts-skeleton
+$ rvm gemset use rails6-vue2-ts3-skeleton
 $ gem install bundler -v '1.17.3'
 ```
 
@@ -92,8 +92,8 @@ $ echo 'export RAILS_MASTER_KEY={ここにmaster.keyの内容を書きます}' >
 $ wget git.io/nodebrew
 $ perl nodebrew setup
 $ echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> ~/.bashrc
-$ nodebrew install-binary v8.9.4
-$ nodebrew use v8.9.4
+$ nodebrew install-binary v10.16.3
+$ nodebrew use v10.16.3
 ```
 
 - デプロイ用の鍵を作成します。作った鍵を `cat` コマンドで表示し、それを github に登録します。
@@ -118,8 +118,8 @@ Capistrano によるデプロイ設定は `config/deploy.rb` および `config/d
 
 - `~/.ssh/config` に、デプロイ先サーバの SSH 設定を追加します。
 - `config/deploy.rb` を開き、下記の点を書きかえます。
-    - `set :application, "rails-vue-ts-skeleton"` の行の `rails-vue-ts-skeleton` を、自分のアプリケーション名に変更
-    - `set :repo_url, "git@github.com:kakerukasai/rails-vue-ts-skeleton.git"` の行の `git@github.com:kakerukasai/rails-vue-ts-skeleton.git"` を、自分のアプリケーションのリポジトリ URL に変更
+    - `set :application, "rails6-vue2-ts3-skeleton"` の行の `rails6-vue2-ts3-skeleton` を、自分のアプリケーション名に変更
+    - `set :repo_url, "git@github.com:kakerukasai/rails6-vue2-ts3-skeleton.git"` の行の `git@github.com:kakerukasai/rails6-vue2-ts3-skeleton.git"` を、自分のアプリケーションのリポジトリ URL に変更
 - `config/deploy/production.rb` を開き、下記の点を書きかえます。
     - `role :app, %w(com_example_webapp)` `role :web, %w(com_example_webapp)` `role :db,  %w(com_example_webapp)` の3行の `com_example_webapp` を、先程設定した SSH 設定に基づき、デプロイ先の SSH 接続名に書きかえます。
     - `set :user, 'webapp'` の行の `webapp` を、デプロイ先サーバにおける、このアプリケーション実行ユーザ名に書きかえます。
@@ -136,3 +136,15 @@ Capistrano によるデプロイ設定は `config/deploy.rb` および `config/d
 ```
 $ cap production deploy
 ```
+
+## トラブルシューティング
+
+### `Do you want to install 'webpack-cli' (yes/no):` と表示されデプロイが途中で止まる
+根本的な解決法はわかっていませんが、以下の方法で対処してください。
+
+1. デプロイ先サーバに `webapp` ユーザでログイン
+2. `/var/www/sites/com_example/releases/20190101000000` ディレクトリに移動
+    - `/var/www/sites/com_example` の部分には、デプロイ先サーバ内のデプロイ先ディレクトリを指定してください。
+    - `20190101000000` の部分には、 `releases` ディレクトリ内にある最も新しいディレクトリを指定してください。
+3. `$ yarn build:production` を実行すると `Do you want to install 'webpack-cli' (yes/no):` と表示されるので、 `yes` と回答して webpack-cli をインストール
+4. デプロイ先サーバからログアウトし、Capistrano でのデプロイを再度実行する
