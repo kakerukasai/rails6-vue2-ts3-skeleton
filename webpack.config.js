@@ -120,6 +120,7 @@ module.exports = {
   resolve: {
     extensions,
     alias: {
+      'vue$': 'vue/dist/vue.esm.js',
       'images': rootDir + '/frontend/images',
       'scripts': rootDir + '/frontend/scripts',
       'styles': rootDir + '/frontend/styles',
