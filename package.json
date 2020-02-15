@@ -46,7 +46,7 @@
     "webpack-cli": "^3.3.9",
     "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^4.2.2",
-    "yarn": "^1.19.1"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.8.2"
