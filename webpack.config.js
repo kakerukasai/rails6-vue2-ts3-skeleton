@@ -109,7 +109,7 @@ module.exports = {
           {
             loader: 'file-loader',
             query: {
-              name: 'assets/[name].[hash:8].[ext]',
+              name: env.NODE_ENV === 'production' ? '[path][name]-[hash].[ext]' : '[path][name].[ext]',
             },
           },
         ],
